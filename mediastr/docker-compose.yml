@@ -4,9 +4,9 @@ services:
     image: jellyfin/jellyfin:latest
     container_name: jellyfin
     volumes:
-      - /mnt/mem/cloud/mediastr/config:/config
-      - /mnt/mem/cloud/mediastr/cache:/cache
-      - /mnt/mem/data/media:/media:ro
+      - '$JELLYFIN_PATH/config:/config'
+      - '$JELLYFIN_PATH/cache:/cache'
+      - '$JELLYFIN_DATA/media:/media:ro'
     environment:
       - LETSENCRYPT_HOST
       - VIRTUAL_HOST

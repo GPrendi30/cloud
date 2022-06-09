@@ -54,12 +54,12 @@ volumes:
         driver_opts:
             type: nfs
             o: bind
-            device: /mnt/mem/cloud/nextcloud/db
+            device: ${PATH_DB}
     NCData:
         driver_opts:
             type: nfs
             o: bind
-            device: /mnt/mem/cloud/nextcloud/data
+            device: ${PATH_NC}
 
 networks:
     net:

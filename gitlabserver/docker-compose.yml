@@ -4,7 +4,7 @@ services:
   web:
     image: 'gitlab/gitlab-ee:latest'
     restart: always
-    hostname: 'gpcloud.mooo.com'
+    hostname: ${GITLAB_HOSTNAME}
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url ${GITLAB_OMNIBUS_LINK}
