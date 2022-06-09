@@ -2,3 +2,4 @@ certs
 dhparam
 html
 vhost
+.env

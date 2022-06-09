@@ -36,7 +36,7 @@ services:
             - VIRTUAL_HOST=${URL}
             - VIRTUAL_PORT=3000
             - LETSENCRYPT_HOST=${URL}
-            - LETSENCRYPT_EMAIL=geraldprendi18@gmail.com
+            - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
         
         volumes:
             - GiteaData:/var/lib/gitea

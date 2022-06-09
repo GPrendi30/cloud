@@ -31,7 +31,7 @@ services:
             - "/run/docker.sock:/var/run/docker.sock:ro"
         environment:
             NGINX_PROXY_CONTAINER: "reverse-proxy"
-            DEFAULT_EMAIL: "gpcloudadmin@protonmail.com"
+            DEFAULT_EMAIL: ${PROXY_ADMIN_EMAIL}
         restart: "always"
         depends_on:
             - "reverse-proxy"
@@ -44,22 +44,22 @@ volumes:
     driver_opts:
         type: nfs
         o: bind
-        device: /mnt/mem/cloud/proxy/certs
+        device: ${PATH_CERTS}
   html:  
     driver_opts:
         type: nfs
         o: bind
-        device: /mnt/mem/cloud/proxy/html
+        device: ${PATH_HTML}
   vhost: 
     driver_opts:
         type: nfs
         o: bind
-        device: /mnt/mem/cloud/proxy/vhost
+        device: ${PATH_VHOST}
   dhparam: 
     driver_opts:
         type: nfs
         o: bind
-        device: /mnt/mem/cloud/proxy/dhparam
+        device: ${PATH_DHPARAM}
     
 
 networks:

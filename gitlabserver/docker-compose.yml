@@ -7,7 +7,7 @@ services:
     hostname: 'gpcloud.mooo.com'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gpcloud.mooo.com:8929'
+        external_url ${GITLAB_OMNIBUS_LINK}
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
       - '8929:8929'
