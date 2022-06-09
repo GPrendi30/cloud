@@ -1,0 +1,27 @@
+version: "3"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    volumes:
+      - /mnt/mem/cloud/mediastr/config:/config
+      - /mnt/mem/cloud/mediastr/cache:/cache
+      - /mnt/mem/data/media:/media:ro
+    environment:
+      - LETSENCRYPT_HOST
+      - VIRTUAL_HOST
+      - TRUSTED_PROXIES
+      - OVERWRITEPROTOCOL
+    restart: unless-stopped
+    networks: ["net"]
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1024M
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+        
+networks:
+    net:
+      external: true
