@@ -1,0 +1,53 @@
+version: "2.1"
+services:
+  ubooquity:
+    image: linuxserver/ubooquity:latest
+    container_name: ubooquity
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - MAXMEM
+      - LETSENCRYPT_HOST
+      - VIRTUAL_HOST
+      - TRUSTED_PROXIES
+      - OVERWRITEPROTOCOL
+      - LETSENCRYPT_EMAIL
+      - VIRTUAL_PORT
+    volumes:
+      - "UConfig:/config"
+      - "UBooks:/books"
+      - "UComics:/comics"
+      - "UFiles:/files"
+    ports:
+      - 2203:2203
+    networks:
+      - net
+    restart: unless-stopped
+
+
+volumes:
+  UConfig:
+    driver_opts:
+      type: nfs
+      o: bind
+      device: ${PATH_CONFIG}
+  UBooks:
+    driver_opts:
+      type: nfs
+      o: bind
+      device: ${PATH_UBOOKS}
+  UComics:
+    driver_opts:
+      type: nfs 
+      o: bind
+      device: ${PATH_UCOMICS}
+  UFiles:
+    driver_opts:
+      type: nfs
+      o: bind
+      device: ${PATH_UFILES}
+
+networks:
+  net:
+    external: true
