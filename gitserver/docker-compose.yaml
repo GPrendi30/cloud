@@ -48,9 +48,6 @@ services:
             - net
         depends_on:
             - db
-        ports:
-            - 2222:2222
-            - 3000:3000
         labels:
             - "com.centurylinklabs.watchtower.enable=true"
 
